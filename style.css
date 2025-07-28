@@ -1,45 +1,67 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #121212;
-  color: #eee;
-  text-align: center;
-  padding: 40px;
-}
-h1 {
-  color: #00b894;
-}
-button {
-  background: #00b894;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1d1d1d, #3a3a3a);
   color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  background: #222;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  max-width: 500px;
+  width: 90%;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: #00ffcc;
+}
+
+button {
+  background: #00ffcc;
+  color: #000;
   border: none;
-  padding: 12px 25px;
+  padding: 12px 24px;
   margin: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  font-size: 1rem;
+  transition: background 0.3s;
 }
+
 button:hover {
-  background: #019875;
+  background: #00ddb5;
 }
-#email {
+
+.email-display {
+  margin: 15px 0;
   font-weight: bold;
-  margin: 20px 0;
-  font-size: 1.5em;
+  font-size: 1.1em;
   word-break: break-all;
 }
-#timer {
-  color: #d63031;
-  margin-bottom: 20px;
-  font-size: 1.2em;
-}
-#inbox {
-  margin-top: 30px;
-  background: #222;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  color: #ccc;
+
+.messages {
+  margin-top: 20px;
   text-align: left;
+  max-height: 300px;
+  overflow-y: auto;
+  background: #111;
+  padding: 10px;
+  border-radius: 10px;
 }
+
+.message {
+  background: #333;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+                              }
+  
