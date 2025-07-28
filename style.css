@@ -16,6 +16,7 @@ button {
   margin: 10px;
   border-radius: 5px;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 button:hover {
   background: #019875;
@@ -24,6 +25,7 @@ button:hover {
   font-weight: bold;
   margin: 20px 0;
   font-size: 1.5em;
+  word-break: break-all;
 }
 #timer {
   color: #d63031;
