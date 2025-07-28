@@ -1,97 +1,72 @@
 body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7fa;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f3f4f6;
-  color: #111827;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 2rem;
+  max-width: 500px;
+  margin-top: 40px;
   background: white;
-  border-radius: 1rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.header h1 {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-.btn {
-  padding: 0.5rem 1rem;
-  border: none;
-  background: #3b82f6;
-  color: white;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.3s;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.btn:hover {
-  background: #2563eb;
+h1 {
+  text-align: center;
+  color: #333;
 }
 
 .email-box {
-  margin: 1.5rem 0;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
 .email-box input {
-  width: 100%;
-  padding: 1rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  background: #f9fafb;
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
 }
 
-.message-box {
-  margin-top: 2rem;
+.email-box button {
+  background: #007BFF;
+  color: white;
+  border: none;
+  padding: 0 15px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.message-box h2 {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+.refresh-box {
+  text-align: right;
+  margin-bottom: 15px;
 }
 
-.message-box .btn {
-  margin-top: 1rem;
+.refresh-box button {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.messages {
+  background: #eef1f5;
+  padding: 15px;
+  border-radius: 8px;
 }
 
 .message {
-  background: #f1f5f9;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  margin-top: 1rem;
-}
-
-@media (max-width: 500px) {
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .header h1, .header .btn {
-    width: 100%;
-  }
-
-  .btn {
-    justify-content: center;
-  }
+  margin-bottom: 10px;
+  padding: 10px;
+  background: white;
+  border-left: 4px solid #007BFF;
+  border-radius: 5px;
   }
   
