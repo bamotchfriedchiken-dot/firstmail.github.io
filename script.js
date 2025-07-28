@@ -3,7 +3,7 @@ const timerDisplay = document.getElementById("timer");
 const inboxDisplay = document.getElementById("inbox");
 
 let email = "";
-let countdown = 600; // 10 minutes en secondes
+let countdown = 600; // 10 minutes in seconds
 let countdownInterval;
 let inboxInterval;
 
@@ -13,7 +13,10 @@ function generateRandomEmail() {
   for (let i = 0; i < 10; i++) {
     name += chars.charAt(Math.floor(Math.random() * chars.length));
   }
-  return `${name}@1secmail.com`;
+  // List of valid domains for 1secmail API
+  const domains = ["1secmail.com", "1secmail.org", "1secmail.net", "xojxe.com", "wwjmp.com", "kekse.mail"];
+  const domain = domains[Math.floor(Math.random() * domains.length)];
+  return `${name}@${domain}`;
 }
 
 function updateEmail() {
@@ -23,13 +26,13 @@ function updateEmail() {
   clearInterval(countdownInterval);
   clearInterval(inboxInterval);
   countdownInterval = setInterval(updateTimer, 1000);
-  inboxInterval = setInterval(fetchInbox, 15000); // rafraîchit toutes les 15 sec
+  inboxInterval = setInterval(fetchInbox, 15000); // refresh inbox every 15 seconds
   fetchInbox();
 }
 
 function updateTimer() {
   if (countdown <= 0) {
-    updateEmail(); // génère un nouvel email automatiquement
+    updateEmail(); // generate a new email automatically
     return;
   }
   const minutes = Math.floor(countdown / 60);
@@ -71,4 +74,3 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("generateBtn").addEventListener("click", updateEmail);
   document.getElementById("refreshBtn").addEventListener("click", fetchInbox);
 });
-    
