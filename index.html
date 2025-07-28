@@ -2,21 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MyMail - Temporary Email Generator</title>
-  <meta name="description" content="Free temporary email generator. Create disposable mailboxes instantly for 10 minutes. Fast, secure & private. No sign-up required." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Temp Mail Generator</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>MyMail Temporary Email Generator</h1>
-
-  <div id="email">Loading email...</div>
-  <div id="timer">Loading timer...</div>
-
-  <button id="generateBtn">Generate</button>
-  <button id="refreshBtn">Refresh</button>
-
-  <div id="inbox">Inbox messages will appear here...</div>
+  <div class="container">
+    <h1>🔥 Temp Mail Generator</h1>
+    <button id="generate">Generate Email</button>
+    <div class="email-display" id="emailDisplay"></div>
+    <button id="refresh" class="refresh-btn">Refresh Inbox</button>
+    <div id="messages" class="messages"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>
