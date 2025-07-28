@@ -1,60 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Temp Mail Generator</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      padding: 20px;
-      text-align: center;
-    }
-    h1 {
-      color: #333;
-    }
-    input[type="text"] {
-      width: 80%;
-      padding: 10px;
-      font-size: 16px;
-      margin-bottom: 15px;
-    }
-    button {
-      padding: 10px 20px;
-      margin: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    #messages {
-      margin-top: 20px;
-    }
-    .message {
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin: 10px auto;
-      background: #fff;
-      width: 90%;
-      text-align: left;
-    }
-    .info {
-      color: #777;
-    }
-    .error {
-      color: red;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <h1>TempMail</h1>
+    </header>
 
-  <h1>📧 Temp Mail Generator</h1>
-  <input type="text" id="email" readonly />
-  <br/>
-  <button id="generate">Generate</button>
-  <button id="refresh">Refresh Inbox</button>
+    <div class="email-box">
+      <input type="text" id="email" readonly>
+      <button id="generate">
+        🔄 Generate Email
+      </button>
+    </div>
 
-  <div id="messages"></div>
+    <div class="refresh-box">
+      <h2>Inbox</h2>
+      <button id="refresh">🔁 Refresh</button>
+    </div>
 
-  <script src="script.js"></script>
+    <div id="messages" class="messages">
+      <p>No messages yet...</p>
+    </div>
+  </div>
 </body>
 </html>
