@@ -3,8 +3,9 @@ const timerDisplay = document.getElementById("timer");
 const inboxDisplay = document.getElementById("inbox");
 
 let email = "";
-let countdown = 600;
-let intervalId;
+let countdown = 600; // 10 minutes en secondes
+let countdownInterval;
+let inboxInterval;
 
 function generateRandomEmail() {
   const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
@@ -19,14 +20,16 @@ function updateEmail() {
   email = generateRandomEmail();
   emailDisplay.innerText = email;
   countdown = 600;
-  if (intervalId) clearInterval(intervalId);
-  intervalId = setInterval(updateTimer, 1000);
+  clearInterval(countdownInterval);
+  clearInterval(inboxInterval);
+  countdownInterval = setInterval(updateTimer, 1000);
+  inboxInterval = setInterval(fetchInbox, 15000); // rafraîchit toutes les 15 sec
   fetchInbox();
 }
 
 function updateTimer() {
   if (countdown <= 0) {
-    updateEmail();
+    updateEmail(); // génère un nouvel email automatiquement
     return;
   }
   const minutes = Math.floor(countdown / 60);
@@ -35,24 +38,32 @@ function updateTimer() {
   countdown--;
 }
 
-function fetchInbox() {
+async function fetchInbox() {
   if (!email) return;
   const [login, domain] = email.split("@");
-  fetch(`https://www.1secmail.com/api/v1/?action=getMessages&login=${login}&domain=${domain}`)
-    .then((response) => response.json())
-    .then((messages) => {
-      inboxDisplay.innerHTML = "";
-      if (messages.length === 0) {
-        inboxDisplay.innerHTML = "<p>No messages yet.</p>";
-        return;
-      }
-      messages.forEach((msg) => {
-        inboxDisplay.innerHTML += `<div><strong>From:</strong> ${msg.from}<br><strong>Subject:</strong> ${msg.subject}</div><hr>`;
-      });
-    })
-    .catch(() => {
-      inboxDisplay.innerHTML = "<p>Error fetching messages.</p>";
-    });
+  try {
+    const response = await fetch(`https://www.1secmail.com/api/v1/?action=getMessages&login=${login}&domain=${domain}`);
+    const messages = await response.json();
+    if (!Array.isArray(messages)) throw new Error("Invalid response");
+    inboxDisplay.innerHTML = "";
+    if (messages.length === 0) {
+      inboxDisplay.innerHTML = "<p>No messages yet.</p>";
+      return;
+    }
+    for (const msg of messages) {
+      const date = new Date(msg.date).toLocaleString();
+      inboxDisplay.innerHTML += `
+        <div style="margin-bottom:15px; padding:10px; border:1px solid #444; border-radius:5px; background:#222;">
+          <strong>From:</strong> ${msg.from} <br/>
+          <strong>Subject:</strong> ${msg.subject} <br/>
+          <strong>Date:</strong> ${date}
+        </div>
+      `;
+    }
+  } catch (error) {
+    inboxDisplay.innerHTML = "<p>Error fetching messages.</p>";
+    console.error("Fetch inbox error:", error);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -60,3 +71,4 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("generateBtn").addEventListener("click", updateEmail);
   document.getElementById("refreshBtn").addEventListener("click", fetchInbox);
 });
+    
