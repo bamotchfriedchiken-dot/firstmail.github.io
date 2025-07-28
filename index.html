@@ -2,32 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Temp Mail Generator</title>
   <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>TempMail</h1>
-    </header>
+  <header>
+    <h1>Temp Mail</h1>
+  </header>
 
-    <div class="email-box">
+  <main>
+    <div class="mail-section">
       <input type="text" id="email" readonly>
-      <button id="generate">
-        🔄 Generate Email
-      </button>
+      <button id="generate">🎲 Generate</button>
+      <button id="refresh">🔄 Refresh</button>
     </div>
 
-    <div class="refresh-box">
-      <h2>Inbox</h2>
-      <button id="refresh">🔁 Refresh</button>
-    </div>
-
-    <div id="messages" class="messages">
+    <section id="messages">
       <p>No messages yet...</p>
-    </div>
-  </div>
+    </section>
+  </main>
 </body>
 </html>
