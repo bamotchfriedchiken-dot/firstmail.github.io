@@ -1,72 +1,64 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f7fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-}
-
-.container {
-  max-width: 500px;
-  margin-top: 40px;
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.1);
-}
-
-h1 {
-  text-align: center;
+  background: #f1f1f1;
   color: #333;
 }
 
-.email-box {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
+.container {
+  max-width: 700px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 }
 
-.email-box input {
+header h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.email-box,
+.refresh-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+#email {
   flex: 1;
   padding: 10px;
-  font-size: 16px;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
 }
 
-.email-box button {
-  background: #007BFF;
-  color: white;
+button {
+  padding: 10px 16px;
+  font-size: 1rem;
+  background-color: #007bff;
   border: none;
-  padding: 0 15px;
+  color: white;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.refresh-box {
-  text-align: right;
-  margin-bottom: 15px;
+button:hover {
+  background-color: #0056b3;
 }
 
-.refresh-box button {
-  background: #28a745;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.messages {
-  background: #eef1f5;
-  padding: 15px;
-  border-radius: 8px;
-}
-
-.message {
-  margin-bottom: 10px;
+.messages .message {
   padding: 10px;
-  background: white;
-  border-left: 4px solid #007BFF;
-  border-radius: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+.message a {
+  color: #007bff;
+  text-decoration: none;
   }
   
