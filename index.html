@@ -1,54 +1,60 @@
-const emailInput = document.getElementById("email");
-const generateBtn = document.getElementById("generate");
-const refreshBtn = document.getElementById("refresh");
-const messagesDiv = document.getElementById("messages");
-
-let currentEmail = "";
-let currentId = "";
-
-async function generateEmail() {
-  try {
-    const res = await fetch("https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1");
-    const data = await res.json();
-
-    currentEmail = data[0];
-    currentId = currentEmail.split("@")[0];
-    const domain = currentEmail.split("@")[1];
-
-    emailInput.value = currentEmail;
-    messagesDiv.innerHTML = `<p class="info">No messages yet...</p>`;
-  } catch (error) {
-    messagesDiv.innerHTML = `<p class="error">Failed to generate email. Try again.</p>`;
-  }
-}
-
-async function fetchMessages() {
-  if (!currentEmail) return;
-
-  try {
-    const domain = currentEmail.split("@")[1];
-    const res = await fetch(`https://www.1secmail.com/api/v1/?action=getMessages&login=${currentId}&domain=${domain}`);
-    const data = await res.json();
-
-    if (data.length === 0) {
-      messagesDiv.innerHTML = `<p class="info">No messages yet...</p>`;
-      return;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Temp Mail Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      text-align: center;
     }
+    h1 {
+      color: #333;
+    }
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #messages {
+      margin-top: 20px;
+    }
+    .message {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px auto;
+      background: #fff;
+      width: 90%;
+      text-align: left;
+    }
+    .info {
+      color: #777;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
 
-    messagesDiv.innerHTML = data.map(msg => `
-      <div class="message">
-        <p><strong>From:</strong> ${msg.from}</p>
-        <p><strong>Subject:</strong> ${msg.subject}</p>
-        <a href="https://www.1secmail.com/mailbox/?action=readMessage&login=${currentId}&domain=${domain}&id=${msg.id}" target="_blank">Read</a>
-      </div>
-    `).join('');
-  } catch (error) {
-    messagesDiv.innerHTML = `<p class="error">Error loading messages.</p>`;
-  }
-}
+  <h1>📧 Temp Mail Generator</h1>
+  <input type="text" id="email" readonly />
+  <br/>
+  <button id="generate">Generate</button>
+  <button id="refresh">Refresh Inbox</button>
 
-generateBtn.addEventListener("click", generateEmail);
-refreshBtn.addEventListener("click", fetchMessages);
+  <div id="messages"></div>
 
-// Génère un email dès l’arrivée sur le site
-generateEmail();
+  <script src="script.js"></script>
+</body>
+</html>
